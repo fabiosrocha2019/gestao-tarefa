@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TasksComponent } from "./components/tasks/tasks.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TasksComponent } from "./components/tasks/tasks.component";
         { path: 'header', component: HeaderComponent },
     ]),
     TasksComponent,
-    HeaderComponent
+    HeaderComponent,
+    FontAwesomeModule
 ],
   providers: [],
   bootstrap: [AppComponent]
