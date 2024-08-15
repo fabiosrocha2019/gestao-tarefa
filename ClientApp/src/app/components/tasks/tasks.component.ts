@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { StatusEnum } from 'src/app/status/StatusEnum';
+import { TaskListComponent } from '../task-list/task-list.component';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [CommonModule, TaskItemComponent, AddTaskComponent],
+  imports: [CommonModule, TaskItemComponent, AddTaskComponent, TaskListComponent],
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })

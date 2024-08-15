@@ -11,16 +11,15 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TasksComponent } from "./components/tasks/tasks.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { TaskListComponent } from './components/task-list/task-list-component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchDataComponent,
-    // TaskListComponent,
+    FetchDataComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +33,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     TasksComponent,
     HeaderComponent,
     FontAwesomeModule,
-    // TaskListComponent,
     ReactiveFormsModule
 ],
   providers: [],
