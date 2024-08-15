@@ -16,7 +16,8 @@ export class TaskItemComponent {
   @Output() onDeleteTask = new EventEmitter<Tarefa>();
   @Output() onToggleConcluido = new EventEmitter<Tarefa>();
 
-  faTimes = faTimes
+  faTimes = faTimes;
+  StatusEnum: any;
 
 
   onDelete(tarefa: Tarefa){

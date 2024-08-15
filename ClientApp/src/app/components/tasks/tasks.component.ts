@@ -4,6 +4,7 @@ import { Tarefa } from '../../../Tarefa';
 import { CommonModule } from '@angular/common';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
+import { StatusEnum } from 'src/app/status/StatusEnum';
 
 @Component({
   selector: 'app-tasks',
@@ -40,7 +41,13 @@ export class TasksComponent implements OnInit {
 
 
   toggleConcluiido(tarefa: Tarefa){
-    tarefa.concluido = !tarefa.concluido;
+    if(tarefa.status === StatusEnum.Concluido){
+      tarefa.status = StatusEnum.Pendente
+    }
+    else{
+      tarefa.status = StatusEnum.Concluido
+    }
+      
     this.taskService.updateTask(tarefa).subscribe();
   }
 

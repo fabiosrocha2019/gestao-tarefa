@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms'
 import { Tarefa } from '../../../Tarefa';
 import { ButtonComponent } from '../button/button.component';
 import { CommonModule } from '@angular/common';
+import { StatusEnum } from 'src/app/status/StatusEnum';
 
 @Component({
   selector: 'app-add-task',
@@ -13,34 +14,46 @@ import { CommonModule } from '@angular/common';
 })
 export class AddTaskComponent {
   @Output() onAddTask = new EventEmitter<Tarefa>();
-
-  tarefa: string = '';
-  categoria: string = '';
-  concluido: boolean = false;
+  tarefa: any;
+  titulo: string = '';
+  descricao: string = '';
+  dataVencimento: Date | undefined;
+  status: StatusEnum = StatusEnum.Pendente;
   mostrarAddTarefa: boolean = false;
-
 
   AlteraVisualizacao(valor: boolean){
     this.mostrarAddTarefa = valor;
   }
 
   onSubmit(){
-    if(!this.tarefa) {
-      alert('Adicione uma tarefa!')
+    if(!this.titulo) {
+      alert('Adicione um título!')
+      return;
+    }
+
+    if(!this.descricao) {
+      alert('Adicione uma descrição!')
+      return;
+    }
+
+    if(!this.dataVencimento) {
+      alert('Adicione uma Data de Vencimento!')
       return;
     }
 
     const novaTarefa = {
-      tarefa: this.tarefa,
-      categoria: this.categoria,
-      concluido: this.concluido
+      titulo: this.titulo,
+      descricao: this.descricao,
+      dataVencimento: this.dataVencimento,
+      status: this.status
     }
 
     this.onAddTask.emit(novaTarefa);
 
-    this.tarefa = '';
-    this.categoria = '';
-    this.concluido = false;
+    this.titulo = '';
+    this.descricao = '';
+    this.dataVencimento = undefined;
+    this.status = StatusEnum.Pendente;
 
   }
 }

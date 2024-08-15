@@ -1,6 +1,9 @@
+import { StatusEnum } from "./app/status/StatusEnum";
+
 export interface Tarefa{
     id?: number,
-    tarefa: string,
-    categoria: string,
-    concluido: boolean
+    titulo: string,
+    descricao: string,
+    dataVencimento: Date,
+    status: StatusEnum
 }
