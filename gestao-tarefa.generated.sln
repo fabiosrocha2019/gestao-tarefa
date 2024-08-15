@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestao-tarefa", "gestao-tarefa.csproj", "{7322D763-FF04-4206-A05F-F3B14F34B1FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestao-tarefa", "gestao-tarefa.csproj", "{8547C497-DA70-47BE-97F5-3C9D6A00E184}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7322D763-FF04-4206-A05F-F3B14F34B1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7322D763-FF04-4206-A05F-F3B14F34B1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7322D763-FF04-4206-A05F-F3B14F34B1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7322D763-FF04-4206-A05F-F3B14F34B1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8547C497-DA70-47BE-97F5-3C9D6A00E184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8547C497-DA70-47BE-97F5-3C9D6A00E184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8547C497-DA70-47BE-97F5-3C9D6A00E184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8547C497-DA70-47BE-97F5-3C9D6A00E184}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
