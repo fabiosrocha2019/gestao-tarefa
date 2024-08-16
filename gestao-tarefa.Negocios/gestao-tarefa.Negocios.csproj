@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>gestao_tarefa.Negocios</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\gestao-tarefa.Common\gestao-tarefa.Common.csproj" />
+    <ProjectReference Include="..\gestao-tarefa.Dados\gestao-tarefa.Dados.csproj" />
+  </ItemGroup>
+
+</Project>

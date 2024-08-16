@@ -3,6 +3,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+services.AddScoped<ITarefaService, TarefaService>();
+services.AddScoped<ITarefaRepository, TarefaRepository>();
 
 var app = builder.Build();
 
