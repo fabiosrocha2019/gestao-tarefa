@@ -1,4 +1,4 @@
-﻿using gestao_tarefa.Negocios.Enum;
+﻿using gestao_tarefa.Negocios;
 using System.ComponentModel.DataAnnotations;
 
 namespace gestao_tarefa.Negocios

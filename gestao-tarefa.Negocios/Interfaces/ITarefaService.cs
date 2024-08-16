@@ -2,10 +2,10 @@
 {
     public interface ITarefaService
     {
-        Task<IEnumerable<Tarefa>> GetAllTasksAsync();
-        Task<Tarefa> GetTaskByIdAsync(int id);
-        Task<Tarefa> AddTaskAsync(Tarefa tarefa);
-        Task<Tarefa> UpdateTaskAsync(Tarefa tarefa);
-        Task<Tarefa> DeleteTaskAsync(int id);
+        Task<IEnumerable<TarefaDto>> GetAllTasksAsync();
+        Task<TarefaDto> GetTaskByIdAsync(int id);
+        Task<TarefaDto> AddTaskAsync(Tarefa tarefa);
+        Task<TarefaDto> UpdateTaskAsync(Tarefa tarefa);
+        Task<bool> DeleteTaskAsync(int id);
     }
 }

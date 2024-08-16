@@ -7,9 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\gestao-tarefa.Common\gestao-tarefa.Common.csproj" />
-    <ProjectReference Include="..\gestao-tarefa.Dados\gestao-tarefa.Dados.csproj" />
-  </ItemGroup>
-
 </Project>

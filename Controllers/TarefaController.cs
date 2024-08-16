@@ -1,4 +1,5 @@
 ﻿using gestao_tarefa.Negocios;
+using gestao_tarefa.Dados;
 using Microsoft.AspNetCore.Mvc;
 
 namespace gestao_tarefa.Controllers
@@ -113,7 +114,7 @@ namespace gestao_tarefa.Controllers
         {
             var deletedTarefa = await _tarefaService.DeleteTaskAsync(id);
 
-            if (deletedTarefa == null)
+            if (!deletedTarefa)
             {
                 return NotFound();
             }

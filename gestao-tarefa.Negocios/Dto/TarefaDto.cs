@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace gestao_tarefa.Negocios.Dto
+namespace gestao_tarefa.Negocios
 {
-    public class TarefaDTO
+    public class TarefaDto
     {
         public int Id { get; set; }
 

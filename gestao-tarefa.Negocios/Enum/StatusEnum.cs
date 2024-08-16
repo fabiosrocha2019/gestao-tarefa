@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace gestao_tarefa.Negocios.Enum
+namespace gestao_tarefa.Negocios
 {
     [Description("Status das Tarefas")]
     public enum StatusEnum

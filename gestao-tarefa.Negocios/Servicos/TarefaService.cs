@@ -1,39 +1,107 @@
 ﻿using gestao_tarefa.Negocios.Interfaces;
+using gestao_tarefa.Dados;
+using AutoMapper;
 
-namespace gestao_tarefa.Negocios.Servicos
+namespace gestao_tarefa.Negocios
 {
     public class TarefaService : ITarefaService
     {
-        private readonly ITarefaRepository _tarefaRepository;
+        private readonly TarefaContext _context;
+        private readonly IMapper _mapper;
 
-        public TarefaService(ITarefaRepository tarefaRepository)
+        public TarefaService(TarefaContext context, IMapper mapper)
         {
-            _tarefaRepository = tarefaRepository;
+            _context = context;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Tarefa>> GetAllTasksAsync()
+        public async Task<IEnumerable<TarefaDto>> GetAllTasksAsync()
         {
-            return await _tarefaRepository.GetAllTasksAsync();
+            try
+            {
+                var tarefas = await _context.Tarefas.ToListAsync();
+                return _mapper.Map<IEnumerable<TarefaDto>>(tarefas);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (consider using a logging framework)
+                // For example: _logger.LogError(ex, "Failed to retrieve tasks.");
+                throw new ApplicationException("An error occurred while retrieving tasks.", ex);
+            }
         }
 
-        public async Task<Tarefa> GetTaskByIdAsync(int id)
+        public async Task<TarefaDto> GetTaskByIdAsync(int id)
         {
-            return await _tarefaRepository.GetTaskByIdAsync(id);
+            try
+            {
+                var tarefa = await _context.Tarefas.FindAsync(id);
+                if (tarefa == null)
+                {
+                    return null;
+                }
+                return _mapper.Map<TarefaDto>(tarefa);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                // _logger.LogError(ex, $"Failed to retrieve task with ID {id}.");
+                throw new ApplicationException($"An error occurred while retrieving the task with ID {id}.", ex);
+            }
         }
 
-        public async Task<Tarefa> AddTaskAsync(Tarefa tarefa)
+        public async Task<TarefaDto> AddTaskAsync(Tarefa tarefaDTO)
         {
-            return await _tarefaRepository.AddTaskAsync(tarefa);
+            try
+            {
+                var tarefa = _mapper.Map<Tarefa>(tarefaDTO);
+                _context.Tarefas.Add(tarefa);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<TarefaDto>(tarefa);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                // _logger.LogError(ex, "Failed to add new task.");
+                throw new ApplicationException("An error occurred while adding the new task.", ex);
+            }
         }
 
-        public async Task<Tarefa> UpdateTaskAsync(Tarefa tarefa)
+        public async Task<TarefaDto> UpdateTaskAsync(Tarefa tarefa)
         {
-            return await _tarefaRepository.UpdateTaskAsync(tarefa);
+            try
+            {
+                //var tarefa = _mapper.Map<Tarefa>(tarefa);
+                _context.Tarefas.Update(tarefa);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<TarefaDto>(tarefa);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                // _logger.LogError(ex, $"Failed to update task with ID {tarefaDTO.Id}.");
+                throw new ApplicationException($"An error occurred while updating the task with ID {tarefa.Id}.", ex);
+            }
         }
 
-        public async Task<Tarefa> DeleteTaskAsync(int id)
+        public async Task<bool> DeleteTaskAsync(int id)
         {
-            return await _tarefaRepository.DeleteTaskAsync(id);
+            try
+            {
+                var tarefa = await _context.Tarefas.FindAsync(id);
+                if (tarefa == null)
+                {
+                    return false;
+                }
+                _context.Tarefas.Remove(tarefa);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                // _logger.LogError(ex, $"Failed to delete task with ID {id}.");
+                throw new ApplicationException($"An error occurred while deleting the task with ID {id}.", ex);
+            }
         }
     }
 }
