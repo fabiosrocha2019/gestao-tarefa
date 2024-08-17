@@ -1,7 +1,7 @@
 ﻿using gestao_tarefa.Negocios.Interfaces;
 using gestao_tarefa.Dados;
 using AutoMapper;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace gestao_tarefa.Negocios
 {
@@ -42,8 +42,6 @@ namespace gestao_tarefa.Negocios
             }
             catch (Exception ex)
             {
-                // Log the exception
-                // _logger.LogError(ex, $"Failed to retrieve task with ID {id}.");
                 throw new ApplicationException($"An error occurred while retrieving the task with ID {id}.", ex);
             }
         }
@@ -59,8 +57,6 @@ namespace gestao_tarefa.Negocios
             }
             catch (Exception ex)
             {
-                // Log the exception
-                // _logger.LogError(ex, "Failed to add new task.");
                 throw new ApplicationException("An error occurred while adding the new task.", ex);
             }
         }
@@ -95,8 +91,6 @@ namespace gestao_tarefa.Negocios
             }
             catch (Exception ex)
             {
-                // Log the exception
-                // _logger.LogError(ex, $"Failed to delete task with ID {id}.");
                 throw new ApplicationException($"An error occurred while deleting the task with ID {id}.", ex);
             }
         }

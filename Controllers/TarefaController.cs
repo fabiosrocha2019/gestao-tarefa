@@ -4,18 +4,28 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace gestao_tarefa.Controllers
 {
+    /// <summary>
+    /// Controlador para gerenciar as tarefas.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class TaskController : ControllerBase
     {
         private readonly Negocios.Interfaces.ITarefaService _tarefaService;
 
+        /// <summary>
+        /// Inicializa uma nova instância do controlador de tarefas.
+        /// </summary>
+        /// <param name="tarefaService">Serviço para gerenciar tarefas.</param>
         public TaskController(Negocios.Interfaces.ITarefaService tarefaService)
         {
             _tarefaService = tarefaService;
         }
 
-        // GET: api/Task
+        /// <summary>
+        /// Obtém todas as tarefas.
+        /// </summary>
+        /// <returns>Uma lista de tarefas.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TarefaDto>>> GetTasks()
         {
@@ -31,7 +41,11 @@ namespace gestao_tarefa.Controllers
             return Ok(tarefaDtos);
         }
 
-        // GET: api/Task/{id}
+        /// <summary>
+        /// Obtém uma tarefa pelo ID.
+        /// </summary>
+        /// <param name="id">O ID da tarefa.</param>
+        /// <returns>A tarefa com o ID especificado.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<TarefaDto>> GetTask(int id)
         {
@@ -54,7 +68,11 @@ namespace gestao_tarefa.Controllers
             return Ok(tarefaDto);
         }
 
-        // POST: api/Task
+        /// <summary>
+        /// Adiciona uma nova tarefa.
+        /// </summary>
+        /// <param name="tarefaDto">Os dados da nova tarefa.</param>
+        /// <returns>O status da criação da tarefa.</returns>
         [HttpPost]
         public async Task<ActionResult<TarefaDto>> AddTask(TarefaDto tarefaDto)
         {
@@ -80,7 +98,12 @@ namespace gestao_tarefa.Controllers
             return CreatedAtAction(nameof(GetTask), new { id = createdTarefaDto.Id }, createdTarefaDto);
         }
 
-        // PUT: api/Task/{id}
+        /// <summary>
+        /// Atualiza uma tarefa existente.
+        /// </summary>
+        /// <param name="id">O ID da tarefa a ser atualizada.</param>
+        /// <param name="tarefaDto">Os dados atualizados da tarefa.</param>
+        /// <returns>O status da atualização da tarefa.</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, TarefaDto tarefaDto)
         {
@@ -108,7 +131,11 @@ namespace gestao_tarefa.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Task/{id}
+        /// <summary>
+        /// Remove uma tarefa pelo ID.
+        /// </summary>
+        /// <param name="id">O ID da tarefa a ser removida.</param>
+        /// <returns>O status da remoção da tarefa.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
