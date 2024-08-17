@@ -8,7 +8,7 @@ import { Tarefa } from '../../Tarefa';
 })
 export class TaskService {
 
-  private apiUrl = 'http://localhost:5288/';
+  private apiUrl = 'https://localhost:7058/api/task';
 
   constructor(private http: HttpClient) { }
 
