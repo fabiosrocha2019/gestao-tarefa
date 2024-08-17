@@ -1,0 +1,33 @@
+<div>
+    <!-- Filtro por Status -->
+    <label for="statusFilter">Filtrar por Status:</label>
+    <select id="statusFilter" [(ngModel)]="selectedStatus">
+      <option value="">Todos</option>
+      <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+    </select>
+  </div>
+  
+  <!-- Tabela de Tarefas -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Data de Vencimento</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tarefa of filteredTarefas">
+        <td>{{ tarefa.titulo }}</td>
+        <td>{{ tarefa.descricao }}</td>
+        <td>{{ tarefa.dataVencimento | date }}</td>
+        <td>{{ tarefa.status }}</td>
+        <td>
+          <button (click)="deleteTask(tarefa)">Deletar</button>
+          <button (click)="toggleConcluido(tarefa)">Alternar Concluído</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

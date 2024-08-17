@@ -1,0 +1,53 @@
+<!-- Botão condicional -->
+<ng-container *ngIf="mostrarAddTarefa; else showAddButton">
+  <app-button text="Fechar" color="red" (btnClick)="AlteraVisualizacao(false)"></app-button>
+</ng-container>
+
+<ng-template #showAddButton>
+  <app-button text="Adicionar Tarefa" color="green" (btnClick)="AlteraVisualizacao(true)"></app-button>
+</ng-template>
+
+<!-- Formulário condicional -->
+<form (ngSubmit)="onSubmit()" *ngIf="mostrarAddTarefa" class="add-form">
+  <div>
+    <label for="titulo">Título:</label>
+    <input type="text"
+           name="titulo"
+           class="form-control"
+           placeholder="Adicionar Título"
+           id="titulo"
+           [(ngModel)]="titulo">
+  </div>
+
+  <div class="mb-4">
+    <label for="descricao">Descrição:</label>
+    <textarea name="descricao"
+              id="descricao"
+              class="form-control"
+              placeholder="Adicionar Descrição"
+              [(ngModel)]="descricao"></textarea>
+  </div>
+
+  <div class="mb-4">
+    <label for="dataVencimento">Data de Vencimento:</label>
+    <input type="date"
+           name="dataVencimento"
+           id="dataVencimento"
+           class="form-control"
+           [(ngModel)]="dataVencimento">
+  </div>
+
+  <div class="mb-4">
+    <label for="status">Status:</label>
+    <select name="status"
+            id="status"
+            class="form-select"
+            [(ngModel)]="status">
+      <option *ngFor="let option of statusOptions" [value]="option">
+        {{ option }}
+      </option>
+    </select>
+  </div>
+
+  <input type="submit" value="Salvar Tarefa" class="btn btn-block mb-4">
+</form>
